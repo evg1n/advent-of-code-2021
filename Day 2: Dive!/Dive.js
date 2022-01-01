@@ -8,9 +8,15 @@ const fs = require('fs');
 const data = fs.readFileSync('./input.txt',{encoding:'utf8', flag:'r'});
 let lines = [...data.split("\n")];
 
+<<<<<<< HEAD
 // PART 1
 const navigate = (path) => {
 	let position = 0, depth = 0;
+=======
+let position = 0, depth = 0;
+
+const navigate = (path) => {
+>>>>>>> origin/main
 	path.forEach(instruction => {
 		let direction = instruction.split(" ")[0];
 		let value = parseInt(instruction.split(" ")[1]);
@@ -26,6 +32,7 @@ const navigate = (path) => {
 	return position * depth;
 }
 
+<<<<<<< HEAD
 // PART 2
 const aimToNavigate=(path)=> {
 	let position = 0, depth = 0, aim = 0;
@@ -52,3 +59,6 @@ const aimToNavigate=(path)=> {
 
 navigate(lines);
 aimToNavigate(lines);
+=======
+navigate(lines)
+>>>>>>> origin/main
