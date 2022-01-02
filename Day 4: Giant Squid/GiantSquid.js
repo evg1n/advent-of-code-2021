@@ -15,19 +15,20 @@ let numbers = lines[0].split(",").map(el => parseInt(el));
 let cards = [];
 let bingo = false;
 
-lines.forEach((el,index) => {
+const initBingo = () => lines.forEach((el,index) => {
 	if(index === 0) return;
 	let rows = el.split("\n");
+	
 	let input = 
 	rows.map((row,index) => {
 		return row//.split(" ").map(el => parseInt(el)).filter(el => !isNaN(el))
 	})
-	cards.push(new Card(input))
+	cards.push(new Card(input, index))
 })
 
 numbers.forEach(el => {
 	if(bingo){
-		return
+		//return
 	}
 	cards.forEach(c => {
 		if(!c.bingo){
@@ -38,3 +39,30 @@ numbers.forEach(el => {
 		}
 	})
 })
+
+initBingo();
+
+// PART 2
+cards = [];
+initBingo();
+let bingoOrder = [];
+console.log("PART 2");
+numbers.forEach(el => {
+	cards.forEach(c => {
+		
+			c.markNumber(el)
+			if(c.bingo){
+				if(bingoOrder.find(bingo => bingo.id === c.id)) {
+					return
+				}
+				bingoOrder.push(c)
+			
+		}
+	})
+})
+
+let lastWinningCard = ()=> bingoOrder[bingoOrder.length -1].getData();
+
+lastWinningCard()
+
+// REFACTOR
