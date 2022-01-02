@@ -8,7 +8,10 @@ const fs = require('fs');
 const data = fs.readFileSync('./input.txt',{encoding:'utf8', flag:'r'});
 let lines = [...data.split("\n")];
 
+
 // PART 1
+let position = 0, depth = 0;
+
 let position = 0, depth = 0;
 
 const navigate = (path) => {
@@ -27,7 +30,6 @@ const navigate = (path) => {
 	console.log("PART 1 ANSWER:", position * depth)
 	return position * depth;
 }
-
 
 // PART 2
 const aimToNavigate=(path)=> {
